@@ -1,0 +1,14 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_PATH: ${VITE_API_BASE_PATH:-http://localhost:8080}
+        VITE_GMAIL_CLIENT_ID: ${VITE_GMAIL_CLIENT_ID:-}
+        VITE_APP_IMG_URL: ${VITE_APP_IMG_URL:-}
+        VITE_APP_IMG_USER_URL: ${VITE_APP_IMG_USER_URL:-}
+        VITE_APP_TINY_MCE_API_KEY: ${VITE_APP_TINY_MCE_API_KEY:-}
+    image: spacetostudy-client
+    ports:
+      - '8080:80'

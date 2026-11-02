@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+build-story
+coverage
+src/tests/coverage
+.git
+.github
+.husky
+.idea
+.vscode
+.scannerwork
+test-report.xml
+*.md
+.env
+.env.*
+npm-debug.log*
