@@ -102,10 +102,10 @@ const Navbar = () => {
   return (
     <Box sx={styles.header}>
       <Button
-        component={Link}
+        component={HashLink}
         size={SizeEnum.Small}
         sx={styles.logoButton}
-        to={guestRoutes.home.path}
+        to={guestRoutes.welcome.path}
       >
         <Logo />
       </Button>
