@@ -21,11 +21,11 @@ export const styles = {
     },
     title: {
       typography: 'h5',
-      fontWeight: 500,
-      mb: '16px'
+      fontWeight: 500
     },
     description: {
-      typography: 'body2'
+      typography: 'body2',
+      margin: '25px 0'
     }
   }
 }
