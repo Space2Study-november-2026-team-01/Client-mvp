@@ -18,9 +18,10 @@ const GoogleButton = ({ role, route, buttonWidth, type }) => {
   const [googleAuth] = useGoogleAuthMutation()
 
   const handleCredentialResponse = useCallback(
-    async (token) => {
+    //Фікс для відповідності формату токену на бекенд
+    async ({ credential }) => {
       try {
-        await googleAuth({ token, role }).unwrap()
+        await googleAuth({ token: credential, role }).unwrap()
         closeModal()
       } catch (e) {
         setAlert({
