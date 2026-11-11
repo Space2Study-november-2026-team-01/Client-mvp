@@ -28,6 +28,7 @@ import cookiePolicyPage from './cookie-policy-page.json'
 import guestHomePage from './guest-home-page.json'
 import table from './table.json'
 import subjectsPage from './subjects-page.json'
+import becomeTutor from './become-tutor.json'
 
 const ua = {
   translations: {
@@ -60,7 +61,8 @@ const ua = {
     cookiePolicyPage,
     guestHomePage,
     table,
-    subjectsPage
+    subjectsPage,
+    becomeTutor
   }
 }
 
