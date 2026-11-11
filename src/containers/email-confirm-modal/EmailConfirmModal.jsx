@@ -1,28 +1,35 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import { styles } from '~/containers/email-confirm-modal/EmailConfirmModal.styles'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useModalContext } from '~/context/modal-context'
 import { useTranslation } from 'react-i18next'
 import imgReject from '~/assets/img/email-confirmation-modals/not-success-icon.svg'
+import imgSuccess from '~/assets/img/email-confirmation-modals/success-icon.svg'
 import LoginDialog from '~/containers/guest-home-page/login-dialog/LoginDialog'
 import useAxios from '~/hooks/use-axios'
 import { AuthService } from '~/services/auth-service'
 import Loader from '~/components/loader/Loader'
 import ImgTitleDescription from '~/components/img-title-description/ImgTitleDescription'
+import { styles } from '~/containers/email-confirm-modal/EmailConfirmModal.styles'
 
 const EmailConfirmModal = ({ confirmToken, openModal }) => {
   const { t } = useTranslation()
   const { closeModal } = useModalContext()
+  const [isConfirmed, setIsConfirmed] = useState(false)
 
   const serviceFunction = useCallback(
     () => AuthService.confirmEmail(confirmToken),
     [confirmToken]
   )
 
+  const handleSuccess = useCallback(() => {
+    setIsConfirmed(true)
+  }, [])
+
   const { response, error, loading } = useAxios({
     service: serviceFunction,
-    defaultResponse: null
+    defaultResponse: null,
+    onResponse: handleSuccess
   })
 
   const openLoginDialog = () => {
@@ -34,8 +41,9 @@ const EmailConfirmModal = ({ confirmToken, openModal }) => {
   }
 
   if (
-    (error && error.code === 'BAD_CONFIRM_TOKEN') ||
-    (error && error.code === 'DOCUMENT_NOT_FOUND' && response === null)
+    error &&
+    (error.code === 'BAD_CONFIRM_TOKEN' ||
+      (error.code === 'DOCUMENT_NOT_FOUND' && response === null))
   ) {
     return (
       <Box sx={styles.box}>
@@ -71,6 +79,27 @@ const EmailConfirmModal = ({ confirmToken, openModal }) => {
       </Box>
     )
   }
+
+  if (isConfirmed) {
+    return (
+      <Box sx={styles.box}>
+        <ImgTitleDescription
+          img={imgSuccess}
+          style={styles}
+          title={t('modals.emailConfirm')}
+        />
+        <Button
+          onClick={openLoginDialog}
+          sx={styles.button}
+          variant='contained'
+        >
+          {t('common.confirmButton')}
+        </Button>
+      </Box>
+    )
+  }
+
+  return null
 }
 
 export default EmailConfirmModal
