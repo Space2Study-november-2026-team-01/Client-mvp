@@ -13,8 +13,8 @@
     "autocompleteLabel": "Your native language"
   },
   "categories": {
-    "title": "Velit officia consequat duis enim velit mollit. Other categories you can add in your account settings later.",
-    "mainSubjectsLabel": "Main Tutoring Category",
+    "title": "Please choose the main subjects based on the category. You can add others later.",
+    "mainSubjectsLabel": "Main Study Category",
     "subjectLabel": "Subject",
     "btnText": "Add one more subject",
     "emptyFields": "All fields must be filled",
