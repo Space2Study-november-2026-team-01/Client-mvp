@@ -32,7 +32,7 @@ export const columns: TableColumn<Question>[] = [
       return (
         <Box onClick={handleClick} sx={styles.questionContainer}>
           <IconTitleDescription
-            description={'Which word is the antonym of "benevolent"?'}
+            description={item.text}
             icon={<Box sx={styles.iconWrapper}>{CheckIcons(item.type)}</Box>}
             sx={styles.iconTitleDescription}
             title={item.title}

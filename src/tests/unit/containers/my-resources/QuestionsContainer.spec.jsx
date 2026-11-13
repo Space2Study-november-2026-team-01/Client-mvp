@@ -8,6 +8,7 @@ import { mockAxiosClient, renderWithProviders } from '~tests/test-utils'
 const questionMock = {
   _id: '64fb2c33eba89699411d22bb',
   title: 'First Question',
+  text: 'Question text',
   answers: [
     { text: 'First answer', isCorrect: true },
     { text: 'Second answer', isCorrect: false }
@@ -22,7 +23,8 @@ const responseItemsMock = Array(10)
   .map((_, index) => ({
     ...questionMock,
     _id: `${index}`,
-    title: index + questionMock.title
+    title: index + questionMock.title,
+    text: `Question text ${index}`
   }))
 
 const questionResponseMock = {
@@ -74,6 +76,20 @@ describe('QuestionsContainer test', () => {
 
     expect(columnLabel).toBeInTheDocument()
     expect(questionTitle).toBeInTheDocument()
+  })
+
+  it('should render each question description in its corresponding row', async () => {
+    const firstQuestion = responseItemsMock[0]
+    const secondQuestion = responseItemsMock[1]
+    const firstQuestionRow = (
+      await screen.findByText(firstQuestion.title)
+    ).closest('tr')
+    const secondQuestionRow = (
+      await screen.findByText(secondQuestion.title)
+    ).closest('tr')
+
+    expect(firstQuestionRow).toHaveTextContent(firstQuestion.text)
+    expect(secondQuestionRow).toHaveTextContent(secondQuestion.text)
   })
 })
 
