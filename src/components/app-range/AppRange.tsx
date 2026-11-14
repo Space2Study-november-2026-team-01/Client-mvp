@@ -84,6 +84,7 @@ const AppRange: FC<AppRangeProps> = ({ min, max, value, onChange }) => {
         sort: true
       })
       setRange(newRange)
+      debouncedOnChange(newRange)
     }
   }
 
