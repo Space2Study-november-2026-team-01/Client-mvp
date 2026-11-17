@@ -42,6 +42,50 @@ describe('FileUploader test', () => {
   })
 })
 
+describe('FileUploader with an oversized file', () => {
+  it('should emit and display a file size error', () => {
+    const onUpload = vi.fn()
+    const { getByLabelText, rerender } = render(
+      <FileUploader
+        buttonText={buttonText}
+        emitter={onUpload}
+        initialError=''
+        initialState={[]}
+        isImages
+        validationData={validationData}
+      />
+    )
+    const oversizedFile = new File(
+      [new Uint8Array(validationData.maxFileSize + 1)],
+      'large-image.png',
+      { type: 'image/png' }
+    )
+
+    fireEvent.change(getByLabelText(buttonText), {
+      target: { files: [oversizedFile] }
+    })
+
+    const uploadResult = {
+      files: [],
+      error: validationData.fileSizeError
+    }
+    expect(onUpload).toHaveBeenCalledWith(uploadResult)
+
+    rerender(
+      <FileUploader
+        buttonText={buttonText}
+        emitter={onUpload}
+        initialError={uploadResult.error}
+        initialState={uploadResult.files}
+        isImages
+        validationData={validationData}
+      />
+    )
+
+    expect(screen.getByText(validationData.fileSizeError)).toBeInTheDocument()
+  })
+})
+
 describe('FileUploader test with file', () => {
   const initialState = [fakeFile]
   beforeEach(() => {

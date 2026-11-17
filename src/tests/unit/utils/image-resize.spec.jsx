@@ -29,10 +29,11 @@ describe('calculatePhotoCut', () => {
 })
 
 describe('imageResize', () => {
+  const drawImage = vi.fn()
   HTMLCanvasElement.prototype.toDataURL = vi.fn()
   HTMLCanvasElement.prototype.getContext = () => {
     return {
-      drawImage: vi.fn()
+      drawImage
     }
   }
   let onloadRef
@@ -46,13 +47,33 @@ describe('imageResize', () => {
         this._onload = onload
       }
     })
+    Object.defineProperty(Image.prototype, 'naturalWidth', {
+      configurable: true,
+      value: 1920
+    })
+    Object.defineProperty(Image.prototype, 'naturalHeight', {
+      configurable: true,
+      value: 1080
+    })
   })
-  it('should handle onload event and return url for new image', () => {
-    vi.useFakeTimers('legacy')
+  it('should crop and resize the loaded image and return its data URL', async () => {
     const newImageUrl = 'test.image.png'
     HTMLCanvasElement.prototype.toDataURL.mockReturnValue(newImageUrl)
-    const newImage = imageResize('image-for-test.jpeg', 600, 600)
+    const newImage = imageResize('image-for-test.jpeg', {
+      newHeight: 600,
+      newWidth: 600
+    })
+
     onloadRef()
-    newImage.then((result) => expect(result).toBe(newImageUrl)).then()
+
+    expect(await newImage).toBe(newImageUrl)
+    expect(drawImage).toHaveBeenCalledTimes(1)
+    expect(drawImage.mock.calls[0].slice(1)).toEqual([
+      420, 0, 1080, 1080, 0, 0, 600, 600
+    ])
+    expect(HTMLCanvasElement.prototype.toDataURL).toHaveBeenCalledWith(
+      'image/png',
+      1
+    )
   })
 })
