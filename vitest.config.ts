@@ -21,8 +21,8 @@ export default defineConfig({
     coverage: {
       all: true,
       reporter: ['lcov', 'text'],
-      include: ['src/**/*.jsx', 'src/**/*.tsx'],
-      exclude: ['./src/tests/setup-tests.js'],
+      include: ['src/**/*.{js,jsx,ts,tsx}'],
+      exclude: ['src/tests/**', 'src/tests/setup-tests.js', '**/*.d.ts'],
       reportsDirectory: './src/tests/coverage'
     },
     reporters: ['vitest-sonar-reporter', 'default'],

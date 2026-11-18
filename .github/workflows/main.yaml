@@ -55,9 +55,8 @@ jobs:
             echo "SONAR_TOKEN is not set; skipping SonarQube scan."
           fi
 
-      - name: SonarQube scan
-        if: steps.sonar.outputs.enabled == 'true'
-        uses: SonarSource/sonarqube-scan-action@v8
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v8.3.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
