@@ -9,6 +9,7 @@ import useBreakpoints from '~/hooks/use-breakpoints'
 import { styles } from '~/components/popup-dialog/PopupDialog.styles'
 
 interface PopupDialogProps {
+  closeModal: () => void
   content: React.ReactNode
   paperProps: PaperProps
   timerId: NodeJS.Timeout | null
@@ -16,6 +17,7 @@ interface PopupDialogProps {
 }
 
 const PopupDialog: FC<PopupDialogProps> = ({
+  closeModal,
   content,
   paperProps,
   timerId,
@@ -41,7 +43,7 @@ const PopupDialog: FC<PopupDialogProps> = ({
         onMouseOver={handleMouseOver}
         sx={styles.box}
       >
-        <IconButton sx={styles.icon}>
+        <IconButton aria-label='Close' onClick={closeModal} sx={styles.icon}>
           <CloseIcon />
         </IconButton>
         <Box sx={styles.contentWraper}>{content}</Box>
