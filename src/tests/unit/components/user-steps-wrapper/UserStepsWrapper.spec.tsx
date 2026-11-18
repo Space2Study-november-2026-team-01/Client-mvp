@@ -31,6 +31,12 @@ describe('UserStepsWrapper', () => {
     expect(screen.getByText('General info tab')).toBeInTheDocument()
   })
 
+  it('should render the first tab for student steppers', () => {
+    renderWithProviders(<UserStepsWrapper userRole='student' />)
+
+    expect(screen.getByText('General info tab')).toBeInTheDocument()
+  })
+
   it('should render the second tab when it is selected', async () => {
     renderWithProviders(<UserStepsWrapper userRole='tutor' />)
 

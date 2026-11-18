@@ -15,3 +15,4 @@ export const validations = {
 }
 
 export const tutorStepLabels = ['generalInfo', 'subjects', 'language', 'photo']
+export const studentStepLabels = tutorStepLabels
