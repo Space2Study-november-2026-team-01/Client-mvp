@@ -8,6 +8,7 @@ const StepProvider = ({ children, initialValues, stepLabels }) => {
     errors: {}
   })
   const [subject, setSubject] = useState([])
+  const [subjectCategory, setSubjectCategory] = useState(null)
   const [language, setLanguage] = useState(null)
   const [photo, setPhoto] = useState([])
   const [generalLabel, subjectLabel, languageLabel, photoLabel] = stepLabels
@@ -42,7 +43,14 @@ const StepProvider = ({ children, initialValues, stepLabels }) => {
   )
 
   return (
-    <StepContext.Provider value={{ stepData, handleStepData }}>
+    <StepContext.Provider
+      value={{
+        stepData,
+        handleStepData,
+        subjectCategory,
+        setSubjectCategory
+      }}
+    >
       {children}
     </StepContext.Provider>
   )
