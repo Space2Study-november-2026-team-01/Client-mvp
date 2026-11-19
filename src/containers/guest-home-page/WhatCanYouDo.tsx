@@ -10,6 +10,7 @@ import teachImg from '~/assets/img/guest-home-page/teachImg.png'
 
 import { UserRoleEnum } from '~/types'
 import { styles } from '~/containers/guest-home-page/styles/WhatCanYouDo.styles'
+import useSignupDialog from '~/hooks/use-signup-dialog'
 
 const cardData = [
   {
@@ -30,10 +31,11 @@ const cardData = [
 
 const WhatCanYouDo = () => {
   const { t } = useTranslation()
+  const openSignupDialog = useSignupDialog()
 
   const cards = cardData.map((item) => (
     <InfoCard
-      action={() => {}}
+      action={() => openSignupDialog(item.actionType)}
       actionLabel={t(item.actionLabel)}
       cardWidth={460}
       description={t(item.description)}
