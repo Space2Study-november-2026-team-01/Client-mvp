@@ -32,6 +32,12 @@ describe('Popup dialog test', () => {
 
     expect(content).toBeInTheDocument()
   })
+
+  it('should close when the close button is clicked', () => {
+    fireEvent.click(screen.getByRole('button', { name: 'Close dialog' }))
+
+    expect(closeModal).toHaveBeenCalled()
+  })
 })
 
 describe('Popup dialog test with timerId', () => {

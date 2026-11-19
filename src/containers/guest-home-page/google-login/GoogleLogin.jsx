@@ -41,7 +41,7 @@ const GoogleLogin = ({ type, buttonWidth, role }) => {
         {type === 'signup' ? (
           <Typography
             onClick={openLoginDialog}
-            sx={styles.underlineText}
+            sx={styles.signupLoginText}
             variant='body2'
           >
             {t('signup.joinUs')}
