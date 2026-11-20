@@ -1,4 +1,5 @@
 {
+  "goToLogin": "Go to login",
   "emailConfirm": "Your email has been successfully verified!",
   "emailNotConfirm": "Your email address has not been verified!",
   "emailAlreadyConfirm": "Your email address has already been verified!",

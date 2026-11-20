@@ -1,4 +1,5 @@
 {
+  "goToLogin": "Перейти до входу",
   "emailConfirm": "Ваш email успішно перевірено!",
   "emailNotConfirm": "Ваш email не перевірено!",
   "emailAlreadyConfirm": "Ваш email вже перевірено!",
