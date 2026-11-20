@@ -24,6 +24,7 @@ vi.mock('~/hooks/use-confirm', () => {
 
 describe('Popup dialog test', () => {
   beforeEach(() => {
+    closeModal.mockClear()
     render(<PopupDialog {...props} />)
   })
 
@@ -31,6 +32,19 @@ describe('Popup dialog test', () => {
     const content = screen.getByText(props.content)
 
     expect(content).toBeInTheDocument()
+  })
+
+  it('should close popup when close button is clicked', () => {
+    fireEvent.click(screen.getByTestId('closeButton'))
+
+    expect(closeModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not close popup when clicking on the backdrop', () => {
+    const backdrop = document.querySelector('.MuiBackdrop-root')
+    fireEvent.click(backdrop)
+
+    expect(closeModal).not.toHaveBeenCalled()
   })
 })
 

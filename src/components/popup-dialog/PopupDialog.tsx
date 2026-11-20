@@ -12,6 +12,7 @@ interface PopupDialogProps {
   content: React.ReactNode
   paperProps: PaperProps
   timerId: NodeJS.Timeout | null
+  closeModal: () => void
   closeModalAfterDelay: (delay?: number) => void
 }
 
@@ -19,6 +20,7 @@ const PopupDialog: FC<PopupDialogProps> = ({
   content,
   paperProps,
   timerId,
+  closeModal,
   closeModalAfterDelay
 }) => {
   const { isMobile } = useBreakpoints()
@@ -41,7 +43,11 @@ const PopupDialog: FC<PopupDialogProps> = ({
         onMouseOver={handleMouseOver}
         sx={styles.box}
       >
-        <IconButton sx={styles.icon}>
+        <IconButton
+          data-testid='closeButton'
+          onClick={closeModal}
+          sx={styles.icon}
+        >
           <CloseIcon />
         </IconButton>
         <Box sx={styles.contentWraper}>{content}</Box>
