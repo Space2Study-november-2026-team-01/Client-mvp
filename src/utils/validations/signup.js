@@ -7,7 +7,7 @@ const name = (value) => {
 
   const length = value.trim().length
 
-  if (length < 2 || length > 15) {
+  if (length < 1 || length > 30) {
     return 'common.errorMessages.signupNameLength'
   }
 

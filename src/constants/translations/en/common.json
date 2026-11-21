@@ -69,7 +69,7 @@
     "emptyField": "This field cannot be empty",
     "signupFieldRequired": "This field is required.",
     "nameLength": "This field cannot be longer than 30 characters",
-    "signupNameLength": "This field must contain between 2 and 15 characters",
+    "signupNameLength": "This field must contain between 1 and 30 characters",
     "nameAlphabeticOnly": "This field can contain alphabetic characters only",
     "passwordsDontMatch": "Passwords do not match",
     "shortText": "This text is too short",
