@@ -7,5 +7,14 @@ export const styles = {
     height: { sm: '485px' },
     paddingBottom: { xs: '30px', sm: '0' },
     ...fadeAnimation
+  },
+
+  selectorsContainer: {
+    display: 'flex',
+    gap: '16px',
+    width: '100%',
+    '& > *': {
+      flex: 1
+    }
   }
 }
