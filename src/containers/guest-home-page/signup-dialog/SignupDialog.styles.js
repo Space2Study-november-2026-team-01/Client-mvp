@@ -26,6 +26,18 @@ const styles = {
       maxHeight: '100%',
       overflowY: 'auto',
       mt: 0
+    },
+    '@media (min-width:900px)': {
+      width: '100%',
+      maxWidth: 'none',
+      boxSizing: 'border-box',
+      justifyContent: 'flex-start',
+      gap: '48px',
+      px: '24px',
+      py: '36px'
+    },
+    '@media (min-width:1100px)': {
+      px: '40px'
     }
   },
   mobileHeader: {
@@ -47,11 +59,44 @@ const styles = {
     width: '472px',
     maxWidth: { md: '50%', lg: '472px' },
     maxHeight: 'inherit',
-    pl: { md: '30px', lg: '90px' }
+    pl: { md: '30px', lg: '90px' },
+    '@media (min-width:900px)': {
+      display: 'flex',
+      width: '50%',
+      maxWidth: '520px',
+      minWidth: 0,
+      flex: '1 1 0%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      pl: 0
+    },
+    '@media (min-width:1040px)': {
+      display: 'flex',
+      width: '472px',
+      maxWidth: '472px',
+      minWidth: '472px',
+      flex: '0 0 472px',
+      alignItems: 'center',
+      justifyContent: 'center',
+      pl: 0
+    }
   },
   img: {
     width: '100%',
-    objectFit: 'contain'
+    height: 'auto',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    objectFit: 'contain',
+    '@media (min-width:900px)': {
+      display: 'block'
+    },
+    '@media (min-width:1040px)': {
+      display: 'block',
+      width: '472px',
+      height: '347px',
+      maxWidth: '472px',
+      objectFit: 'contain'
+    }
   },
   formContainer: {
     display: 'flex',
@@ -78,6 +123,18 @@ const styles = {
       pt: '12px',
       pb: '24px',
       borderTop: 0
+    },
+    '@media (min-width:900px)': {
+      width: '460px',
+      maxWidth: '460px',
+      minWidth: '460px',
+      flex: '0 0 460px',
+      maxHeight: 'inherit',
+      pt: 0,
+      pb: 0,
+      pl: 0,
+      pr: 0,
+      borderTop: 0
     }
   },
   title: {
@@ -96,6 +153,12 @@ const styles = {
     '@media (max-width:359.95px)': {
       fontSize: '28px',
       lineHeight: '34px'
+    },
+    '@media (min-width:900px)': {
+      mb: '24px',
+      fontSize: '32px',
+      lineHeight: '40px',
+      whiteSpace: 'nowrap'
     }
   },
   form: {
@@ -117,6 +180,12 @@ const styles = {
       overflow: 'visible',
       pt: '8px',
       pb: '16px'
+    },
+    '@media (min-width:900px)': {
+      width: '100%',
+      maxWidth: '460px',
+      maxHeight: 'inherit',
+      boxSizing: 'border-box'
     }
   }
 }

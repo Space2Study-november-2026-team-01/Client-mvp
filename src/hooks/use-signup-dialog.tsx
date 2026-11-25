@@ -19,6 +19,17 @@ const useSignupDialog = () => {
               width: 'min(662px, calc(100vw - 32px))',
               height: 'min(690px, calc(100vh - 32px))',
               boxSizing: 'border-box'
+            },
+            '@media (min-width:900px)': {
+              width: 'min(1128px, 100vw)',
+              maxWidth: 'none',
+              maxHeight: 'calc(100vh - 32px)',
+              margin: 0,
+              boxSizing: 'border-box'
+            },
+            '@media (min-width:1100px) and (max-width:1199.95px)': {
+              width: 'calc(100vw - 14px)',
+              margin: '7px'
             }
           }
         }

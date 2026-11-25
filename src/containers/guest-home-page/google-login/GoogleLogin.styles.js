@@ -1,6 +1,6 @@
 export const styles = {
   linesBox: {
-    margin: { xs: '16px 0', sm: '12px 0', md: '23px 0' },
+    margin: 0,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',

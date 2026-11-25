@@ -7,6 +7,9 @@ export const styles = {
     maxWidth: '400px',
     '@media (min-width:600px) and (max-width:899.95px)': {
       maxWidth: '455px'
+    },
+    '@media (min-width:900px)': {
+      maxWidth: '460px'
     }
   },
   inputsContainer: {
@@ -15,6 +18,10 @@ export const styles = {
     gap: '26px',
     mb: '6px',
     '@media (max-width:899.95px)': {
+      gap: '16px',
+      mb: '16px'
+    },
+    '@media (min-width:900px)': {
       gap: '16px',
       mb: '16px'
     }
@@ -29,6 +36,15 @@ export const styles = {
     },
     '& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)': {
       transform: 'translate(14px, 13px) scale(1)'
+    },
+    '@media (min-width:900px)': {
+      flexDirection: 'row',
+      gap: '16px',
+      '& > .MuiFormControl-root': {
+        '& .MuiInputBase-root': {
+          height: '48px'
+        }
+      }
     },
     '@media (min-width:600px)': {
       '& > .MuiFormControl-root': {
@@ -59,6 +75,11 @@ export const styles = {
       fontSize: '14px',
       lineHeight: '14px',
       letterSpacing: '0.25px'
+    },
+    '@media (min-width:900px)': {
+      '& .MuiInputBase-root': {
+        height: '48px'
+      }
     }
   },
   passwordField: {
@@ -77,6 +98,11 @@ export const styles = {
       width: '24px',
       height: '24px',
       color: '#607D8B'
+    },
+    '@media (min-width:900px)': {
+      '& .MuiInputBase-root': {
+        height: '48px'
+      }
     }
   },
   checkboxContainer: {
