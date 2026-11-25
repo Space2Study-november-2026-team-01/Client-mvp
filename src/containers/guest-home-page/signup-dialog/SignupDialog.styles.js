@@ -9,10 +9,11 @@ const styles = {
     maxWidth: { sm: 'md', md: 'md', lg: 'lg' },
     mt: { xs: '56px', sm: 0 },
     maxHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
-    '@media (min-width:600px) and (max-width:899.95px)': {
+    '@media (min-width:600px) and (max-width:1024.95px)': {
       width: '100%',
       minWidth: 0,
-      height: '100%',
+      height: 'auto',
+      maxHeight: 'none',
       boxSizing: 'border-box'
     },
     '@media (max-width:599.95px)': {
@@ -27,7 +28,7 @@ const styles = {
       overflowY: 'auto',
       mt: 0
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       width: '100%',
       maxWidth: 'none',
       boxSizing: 'border-box',
@@ -60,7 +61,10 @@ const styles = {
     maxWidth: { md: '50%', lg: '472px' },
     maxHeight: 'inherit',
     pl: { md: '30px', lg: '90px' },
-    '@media (min-width:900px)': {
+    '@media (min-width:900px) and (max-width:1024.95px)': {
+      display: 'none'
+    },
+    '@media (min-width:1025px)': {
       display: 'flex',
       width: '50%',
       maxWidth: '520px',
@@ -71,7 +75,6 @@ const styles = {
       pl: 0
     },
     '@media (min-width:1040px)': {
-      display: 'flex',
       width: '472px',
       maxWidth: '472px',
       minWidth: '472px',
@@ -87,11 +90,10 @@ const styles = {
     maxWidth: '100%',
     maxHeight: '100%',
     objectFit: 'contain',
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       display: 'block'
     },
     '@media (min-width:1040px)': {
-      display: 'block',
       width: '472px',
       height: '347px',
       maxWidth: '472px',
@@ -109,11 +111,12 @@ const styles = {
     pb: { xs: '24px', sm: '56px', md: '70px' },
     pl: { xs: '8px', sm: '104px', md: '90px' },
     pr: { xs: '8px', sm: '104px', md: '90px' },
-    '@media (min-width:600px) and (max-width:899.95px)': {
+    '@media (min-width:600px) and (max-width:1024.95px)': {
       width: '100%',
-      height: '100%',
+      height: 'auto',
+      maxHeight: 'none',
       minWidth: 0,
-      px: 'clamp(24px, calc((100vw - 487px) / 2), 104px)',
+      px: 'clamp(24px, calc((100vw - 400px) / 2), 103px)',
       boxSizing: 'border-box'
     },
     '@media (max-width:599.95px)': {
@@ -124,7 +127,7 @@ const styles = {
       pb: '24px',
       borderTop: 0
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       width: '460px',
       maxWidth: '460px',
       minWidth: '460px',
@@ -154,7 +157,7 @@ const styles = {
       fontSize: '28px',
       lineHeight: '34px'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       mb: '24px',
       fontSize: '32px',
       lineHeight: '40px',
@@ -169,9 +172,11 @@ const styles = {
     height: 'auto',
     pt: '12px',
     ...scrollbar,
-    '@media (min-width:600px) and (max-width:899.95px)': {
+    '@media (min-width:600px) and (max-width:1024.95px)': {
       width: '100%',
-      maxWidth: '455px',
+      maxWidth: '400px',
+      maxHeight: 'none',
+      overflow: 'visible',
       alignSelf: 'flex-start'
     },
     '@media (max-width:599.95px)': {
@@ -181,7 +186,7 @@ const styles = {
       pt: '8px',
       pb: '16px'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       width: '100%',
       maxWidth: '460px',
       maxHeight: 'inherit',

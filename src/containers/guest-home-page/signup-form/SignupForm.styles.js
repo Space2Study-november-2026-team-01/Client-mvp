@@ -5,10 +5,10 @@ export const styles = {
     width: '100%',
     minWidth: 0,
     maxWidth: '400px',
-    '@media (min-width:600px) and (max-width:899.95px)': {
+    '@media (min-width:600px) and (max-width:1024.95px)': {
       maxWidth: '455px'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       maxWidth: '460px'
     }
   },
@@ -17,11 +17,11 @@ export const styles = {
     flexDirection: 'column',
     gap: '26px',
     mb: '6px',
-    '@media (max-width:899.95px)': {
+    '@media (max-width:1024.95px)': {
       gap: '16px',
       mb: '16px'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       gap: '16px',
       mb: '16px'
     }
@@ -37,7 +37,11 @@ export const styles = {
     '& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)': {
       transform: 'translate(14px, 13px) scale(1)'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:600px) and (max-width:1024.95px)': {
+      flexDirection: 'row',
+      gap: '16px'
+    },
+    '@media (min-width:1025px)': {
       flexDirection: 'row',
       gap: '16px',
       '& > .MuiFormControl-root': {
@@ -76,7 +80,7 @@ export const styles = {
       lineHeight: '14px',
       letterSpacing: '0.25px'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       '& .MuiInputBase-root': {
         height: '48px'
       }
@@ -99,7 +103,7 @@ export const styles = {
       height: '24px',
       color: '#607D8B'
     },
-    '@media (min-width:900px)': {
+    '@media (min-width:1025px)': {
       '& .MuiInputBase-root': {
         height: '48px'
       }

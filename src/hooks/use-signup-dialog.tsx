@@ -15,21 +15,18 @@ const useSignupDialog = () => {
         component: <SignupDialog type={type} />,
         paperProps: {
           sx: {
-            '@media (min-width:600px) and (max-width:899.95px)': {
-              width: 'min(662px, calc(100vw - 32px))',
-              height: 'min(690px, calc(100vh - 32px))',
+            '@media (min-width:600px) and (max-width:1024.95px)': {
+              width: 'min(606px, calc(100vw - 32px))',
+              height: 'min(681px, calc(100vh - 32px))',
+              overflowY: 'auto',
               boxSizing: 'border-box'
             },
-            '@media (min-width:900px)': {
-              width: 'min(1128px, 100vw)',
+            '@media (min-width:1025px)': {
+              width: 'min(1128px, calc(100vw - 14px))',
               maxWidth: 'none',
               maxHeight: 'calc(100vh - 32px)',
-              margin: 0,
+              margin: '7px',
               boxSizing: 'border-box'
-            },
-            '@media (min-width:1100px) and (max-width:1199.95px)': {
-              width: 'calc(100vw - 14px)',
-              margin: '7px'
             }
           }
         }
