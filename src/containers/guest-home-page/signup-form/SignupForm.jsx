@@ -31,7 +31,6 @@ const SignupForm = () => {
             label={t('common.labels.firstName')}
             required
             size='large'
-            withHelperText={false}
           />
 
           <AppTextField
@@ -40,7 +39,6 @@ const SignupForm = () => {
             label={t('common.labels.lastName')}
             required
             size='large'
-            withHelperText={false}
           />
         </Box>
 
@@ -52,7 +50,6 @@ const SignupForm = () => {
           size='large'
           sx={styles.emailField}
           type='email'
-          withHelperText={false}
         />
 
         <AppTextField
@@ -64,7 +61,6 @@ const SignupForm = () => {
           size='large'
           sx={styles.passwordField}
           type={showPassword ? 'text' : 'password'}
-          withHelperText={false}
         />
 
         <AppTextField
@@ -76,7 +72,6 @@ const SignupForm = () => {
           size='large'
           sx={styles.passwordField}
           type={showConfirmPassword ? 'text' : 'password'}
-          withHelperText={false}
         />
       </Box>
 

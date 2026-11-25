@@ -1,10 +1,11 @@
 export const styles = {
   linesBox: {
-    margin: 0,
+    margin: '4px 0',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+    height: '32px',
     '&:after, &:before': {
       content: '""',
       flex: 1,

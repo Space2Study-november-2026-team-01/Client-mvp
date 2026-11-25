@@ -5,6 +5,13 @@ export const styles = {
     width: '100%',
     minWidth: 0,
     maxWidth: '400px',
+    '& .MuiFormHelperText-root': {
+      boxSizing: 'border-box',
+      height: '20px',
+      margin: 0,
+      paddingLeft: '12px',
+      lineHeight: '20px'
+    },
     '@media (min-width:600px) and (max-width:1024.95px)': {
       maxWidth: '455px'
     },
@@ -15,14 +22,14 @@ export const styles = {
   inputsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '26px',
+    gap: '8px',
     mb: '6px',
     '@media (max-width:1024.95px)': {
-      gap: '16px',
+      gap: '8px',
       mb: '16px'
     },
     '@media (min-width:1025px)': {
-      gap: '16px',
+      gap: '8px',
       mb: '16px'
     }
   },

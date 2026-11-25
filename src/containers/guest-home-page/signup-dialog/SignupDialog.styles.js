@@ -117,6 +117,8 @@ const styles = {
       maxHeight: 'none',
       minWidth: 0,
       px: 'clamp(24px, calc((100vw - 400px) / 2), 103px)',
+      pt: '40px',
+      pb: '24px',
       boxSizing: 'border-box'
     },
     '@media (max-width:599.95px)': {
