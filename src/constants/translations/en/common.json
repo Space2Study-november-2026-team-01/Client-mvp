@@ -69,6 +69,7 @@
     "emptyField": "This field cannot be empty",
     "signupFieldRequired": "This field is required.",
     "signupNameLength": "This field must contain between 1 and 30 characters",
+    "signupNameFormat": "Use letters only. Spaces, hyphens, and apostrophes are not allowed.",
     "signupTermsRequired": "Please agree to the Terms and Privacy Policy.",
     "nameLength": "This field cannot be longer than 30 characters",
     "nameAlphabeticOnly": "This field can contain alphabetic characters only",

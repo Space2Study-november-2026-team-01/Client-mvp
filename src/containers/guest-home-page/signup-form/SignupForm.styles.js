@@ -40,9 +40,6 @@ export const styles = {
     flexDirection: { xs: 'column', sm: 'row' },
     gap: { xs: '6px', sm: '16px', md: '16px' },
     width: '100%',
-    '& .MuiInputLabel-asterisk': {
-      display: 'none'
-    },
     '& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)': {
       transform: 'translate(14px, 13px) scale(1)'
     },
@@ -126,7 +123,7 @@ export const styles = {
     ml: 0,
     minHeight: '40px',
     alignItems: 'center',
-    '& .MuiFormControlLabel-label': {
+    '& > .MuiTypography-root': {
       fontSize: '14px',
       lineHeight: '20px',
       letterSpacing: '0.0025em',
@@ -155,7 +152,6 @@ export const styles = {
     lineHeight: '20px',
     letterSpacing: '0.0025em',
     textDecoration: 'underline',
-    cursor: 'pointer',
     color: 'primary.900'
   },
   signupButton: {
