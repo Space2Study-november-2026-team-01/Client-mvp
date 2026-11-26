@@ -1,14 +1,18 @@
 import { emptyField, helperTextHandler } from './common'
 
 const name = (value) => {
-  const trimmed = String(value ?? '').trim()
+  const nameValue = String(value ?? '')
 
-  if (!trimmed) {
+  if (!nameValue) {
     return 'common.errorMessages.signupFieldRequired'
   }
 
-  if (trimmed.length > 30) {
+  if (nameValue.length > 30) {
     return 'common.errorMessages.signupNameLength'
+  }
+
+  if (!/^[a-zа-яєії]+$/i.test(nameValue)) {
+    return 'common.errorMessages.signupNameFormat'
   }
 
   return ''

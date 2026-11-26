@@ -26,6 +26,15 @@ const roleImages = {
   tutor: tutorImg
 }
 
+const validations = {
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  agree
+}
+
 const SignupDialog = ({ type }) => {
   const { t } = useTranslation()
 
@@ -45,15 +54,11 @@ const SignupDialog = ({ type }) => {
       confirmPassword: '',
       agree: false
     },
-    validations: {
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-      agree
-    }
+    validations
   })
+  const isFormValid = Object.entries(validations).every(
+    ([field, validate]) => !validate(data[field], data)
+  )
 
   return (
     <Box sx={styles.root}>
@@ -82,6 +87,7 @@ const SignupDialog = ({ type }) => {
             handleBlur={handleBlur}
             handleChange={handleInputChange}
             handleSubmit={handleSubmit}
+            isFormValid={isFormValid}
           />
           <GoogleLogin buttonWidth='100%' role={type} type='signup' />
         </Box>

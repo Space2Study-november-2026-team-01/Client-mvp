@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next'
+import { Link as RouterLink } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Checkbox from '@mui/material/Checkbox'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import Typography from '@mui/material/Typography'
 
 import useInputVisibility from '~/hooks/use-input-visibility'
 import AppTextField from '~/components/app-text-field/AppTextField'
 import AppButton from '~/components/app-button/AppButton'
+import { guestRoutes } from '~/router/constants/guestRoutes'
 import { styles } from '~/containers/guest-home-page/signup-form/SignupForm.styles'
 
 const SignupForm = ({
@@ -16,6 +17,7 @@ const SignupForm = ({
   handleBlur,
   handleChange,
   handleSubmit,
+  isFormValid,
   loading
 }) => {
   const { t } = useTranslation()
@@ -103,43 +105,43 @@ const SignupForm = ({
         />
       </Box>
 
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={data.agree}
-            onChange={(event) =>
-              handleAgreeChange('agree', event.target.checked)
-            }
-            sx={styles.checkbox}
-          />
-        }
-        label={
-          <Typography variant='body2'>
-            {t('signup.iAgree')}{' '}
-            <Typography
-              component='span'
-              sx={styles.underlineText}
-              variant='body2'
-            >
-              {t('common.labels.terms')}
-            </Typography>{' '}
-            {t('signup.and')}{' '}
-            <Typography
-              component='span'
-              sx={styles.underlineText}
-              variant='body2'
-            >
-              {t('common.labels.privacyPolicy')}
-            </Typography>
+      <Box sx={styles.checkboxContainer}>
+        <Checkbox
+          aria-label={`${t('signup.iAgree')} ${t('common.labels.terms')} ${t('signup.and')} ${t('common.labels.privacyPolicy')}`}
+          checked={data.agree}
+          onChange={(event) => handleAgreeChange('agree', event.target.checked)}
+          sx={styles.checkbox}
+        />
+        <Typography variant='body2'>
+          {t('signup.iAgree')}{' '}
+          <Typography
+            component='span'
+            sx={styles.underlineText}
+            variant='body2'
+          >
+            {t('common.labels.terms')}
+          </Typography>{' '}
+          {t('signup.and')}{' '}
+          <Typography
+            component={RouterLink}
+            sx={styles.underlineText}
+            to={guestRoutes.privacyPolicy.path}
+            variant='body2'
+          >
+            {t('common.labels.privacyPolicy')}
           </Typography>
-        }
-        sx={styles.checkboxContainer}
-      />
+        </Typography>
+      </Box>
       {errors.agree ? (
         <Typography sx={styles.agreeError}>{t(errors.agree)}</Typography>
       ) : null}
 
-      <AppButton loading={loading} sx={styles.signupButton} type='submit'>
+      <AppButton
+        disabled={!isFormValid}
+        loading={loading}
+        sx={styles.signupButton}
+        type='submit'
+      >
         {t('common.labels.signup')}
       </AppButton>
     </Box>
