@@ -10,7 +10,7 @@ import { userService } from '~/services/user-service'
 import { snackbarVariants } from '~/constants'
 
 const useSteps = ({ steps }) => {
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStepState] = useState(0)
   const { closeModal } = useModalContext()
   const { stepData } = useStepContext()
   const { setAlert } = useSnackBarContext()
@@ -50,11 +50,20 @@ const useSteps = ({ steps }) => {
   )
 
   const next = () => {
-    setActiveStep((prev) => prev + 1)
+    if (!stepErrors[activeStep]) {
+      setActiveStepState((prev) => prev + 1)
+    }
   }
 
   const back = () => {
-    setActiveStep((prev) => prev - 1)
+    setActiveStepState((prev) => prev - 1)
+  }
+
+  const setActiveStep = (step) => {
+    if (step > activeStep && stepErrors[activeStep]) {
+      return
+    }
+    setActiveStepState(step)
   }
 
   const isLastStep = activeStep === steps.length - 1
