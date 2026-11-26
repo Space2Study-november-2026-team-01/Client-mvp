@@ -55,6 +55,16 @@
     "moveToDraft": "Перемістити до чернетки",
     "closeOffer": "Закрити пропозицію"
   },
+  "errorMessages": {
+    "emailValid": "Введіть адресу електронної пошти у форматі name@example.com",
+    "passwordLength": "Пароль має містити від 8 до 25 символів",
+    "passwordValid": "Пароль має містити щонайменше одну літеру та одну цифру",
+    "emptyField": "Це поле не може бути порожнім",
+    "signupFieldRequired": "Це поле обов'язкове.",
+    "signupNameLength": "Це поле має містити від 1 до 30 символів",
+    "signupTermsRequired": "Підтвердіть згоду з Умовами та Політикою конфіденційності.",
+    "passwordsDontMatch": "Паролі не збігаються"
+  },
   "levels": {
     "beginner": "Початковий",
     "intermediate": "Середній",

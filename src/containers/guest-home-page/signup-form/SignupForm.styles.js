@@ -7,10 +7,12 @@ export const styles = {
     maxWidth: '400px',
     '& .MuiFormHelperText-root': {
       boxSizing: 'border-box',
-      height: '20px',
+      height: 'auto',
+      minHeight: '20px',
       margin: 0,
       paddingLeft: '12px',
-      lineHeight: '20px'
+      lineHeight: '20px',
+      whiteSpace: 'normal'
     },
     '@media (min-width:600px) and (max-width:1024.95px)': {
       maxWidth: '455px'
@@ -130,6 +132,13 @@ export const styles = {
       letterSpacing: '0.0025em',
       color: 'primary.900'
     }
+  },
+  agreeError: {
+    display: 'block',
+    mb: '8px',
+    color: 'error.main',
+    fontSize: '12px',
+    lineHeight: '20px'
   },
   checkbox: {
     p: '8px 12px 8px 0',
