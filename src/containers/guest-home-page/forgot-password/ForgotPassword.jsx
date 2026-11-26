@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useSnackBarContext } from '~/context/snackbar-context'
 import { useModalContext } from '~/context/modal-context'
 import useForm from '~/hooks/use-form'
+import useConfirm from '~/hooks/use-confirm'
 
 import AppTextField from '~/components/app-text-field/AppTextField'
 import LoginDialog from '~/containers/guest-home-page/login-dialog/LoginDialog'
@@ -25,6 +26,11 @@ const ForgotPassword = () => {
   const { openModal, closeModal } = useModalContext()
   const [loading, setLoading] = useState(false)
   const { setAlert } = useSnackBarContext()
+  const { setNeedConfirmation } = useConfirm()
+
+  useEffect(() => {
+    setNeedConfirmation(true)
+  }, [setNeedConfirmation])
 
   const backToLogin = () => {
     openModal({ component: <LoginDialog /> })
