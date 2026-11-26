@@ -74,7 +74,7 @@ const EmailConfirmModal = ({ confirmToken, openModal }) => {
           sx={styles.button}
           variant='contained'
         >
-          {t('common.confirmButton')}
+          {t('modals.goToLogin')}
         </Button>
       </Box>
     )
@@ -93,7 +93,7 @@ const EmailConfirmModal = ({ confirmToken, openModal }) => {
           sx={styles.button}
           variant='contained'
         >
-          {t('common.confirmButton')}
+          {t('modals.goToLogin')}
         </Button>
       </Box>
     )
