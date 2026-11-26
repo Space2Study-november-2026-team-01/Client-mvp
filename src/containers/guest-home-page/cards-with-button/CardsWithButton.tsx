@@ -19,15 +19,18 @@ import { styles } from '~/containers/guest-home-page/cards-with-button/CardsWith
 
 interface CardsWithButtonProps {
   array: AccordionWithImageItem[]
-  role: UserRoleEnum
+  role: UserRoleEnum.Student | UserRoleEnum.Tutor
   btnText: string
   isTutor: boolean
+  onClick: (role: UserRoleEnum.Student | UserRoleEnum.Tutor) => void
 }
 
 const CardsWithButton: FC<CardsWithButtonProps> = ({
   array,
   btnText,
-  isTutor
+  isTutor,
+  onClick,
+  role
 }) => {
   const { t } = useTranslation()
 
@@ -63,7 +66,11 @@ const CardsWithButton: FC<CardsWithButtonProps> = ({
       <Transition in={isTutor} timeout={300}>
         {(state) => cards(state)}
       </Transition>
-      <AppButton size={SizeEnum.ExtraLarge} sx={styles.button}>
+      <AppButton
+        onClick={() => onClick(role)}
+        size={SizeEnum.ExtraLarge}
+        sx={styles.button}
+      >
         {btnText}
       </AppButton>
     </>

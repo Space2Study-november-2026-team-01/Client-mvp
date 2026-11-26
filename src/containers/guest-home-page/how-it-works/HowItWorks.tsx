@@ -11,14 +11,17 @@ import {
   studentCardBoxArray
 } from '~/containers/guest-home-page/how-it-works/CardBoxArrays'
 import { guestRoutes } from '~/router/constants/guestRoutes'
+import useSignupDialog from '~/hooks/use-signup-dialog'
 
 import { TypographyVariantEnum, UserRoleEnum } from '~/types'
 import { styles } from '~/containers/guest-home-page/how-it-works/HowItWorks.styles'
 
 const HowItWorks = () => {
   const { t } = useTranslation()
+  const openSignupDialog = useSignupDialog()
 
   const [isTutor, setIsTutor] = useState(false)
+  const role = isTutor ? UserRoleEnum.Tutor : UserRoleEnum.Student
 
   const onChange = () => {
     setIsTutor(!isTutor)
@@ -54,7 +57,8 @@ const HowItWorks = () => {
               : t('guestHomePage.whatCanYouDo.learn.actionLabel')
           }
           isTutor={isTutor}
-          role={isTutor ? UserRoleEnum.Tutor : UserRoleEnum.Student}
+          onClick={openSignupDialog}
+          role={role}
         />
       </Box>
     </Box>
