@@ -3,13 +3,19 @@ import Typography from '@mui/material/Typography'
 import { useTranslation } from 'react-i18next'
 
 import useForm from '~/hooks/use-form'
+import { useSignUpMutation } from '~/services/auth-service'
+import { useModalContext } from '~/context/modal-context'
+import { useSnackBarContext } from '~/context/snackbar-context'
+import { snackbarVariants } from '~/constants'
 
 import studentImg from '~/assets/img/signup-dialog/student.svg'
 import tutorImg from '~/assets/img/signup-dialog/tutor.svg'
 
 import SignupForm from '~/containers/guest-home-page/signup-form/SignupForm'
+import NotificationModal from '~/containers/guest-home-page/notification-modal/NotificationModal'
 import GoogleLogin from '~/containers/guest-home-page/google-login/GoogleLogin'
 import Logo from '~/containers/logo/Logo'
+import infoIcon from '~/assets/img/guest-home-page/info.svg'
 
 import {
   agree,
@@ -28,6 +34,9 @@ const roleImages = {
 
 const SignupDialog = ({ type }) => {
   const { t } = useTranslation()
+  const { openModal, closeModal } = useModalContext()
+  const { setAlert } = useSnackBarContext()
+  const [signUp, { isLoading }] = useSignUpMutation()
 
   const {
     handleSubmit,
@@ -52,6 +61,45 @@ const SignupDialog = ({ type }) => {
       password,
       confirmPassword,
       agree
+    },
+    submitWithData: true,
+    onSubmit: async (formData) => {
+      try {
+        const { userEmail } = await signUp({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+          role: type
+        }).unwrap()
+
+        const description = (
+          <Typography component='span'>
+            {t('signup.confirmEmailMessage')}
+            <Typography component='span' variant='subtitle2'>
+              {userEmail}
+            </Typography>
+            {t('signup.confirmEmailDesc')}
+          </Typography>
+        )
+
+        openModal({
+          component: (
+            <NotificationModal
+              buttonTitle={t('common.confirmButton')}
+              description={description}
+              img={infoIcon}
+              onClose={closeModal}
+              title={t('signup.confirmEmailTitle')}
+            />
+          )
+        })
+      } catch (error) {
+        setAlert({
+          severity: snackbarVariants.error,
+          message: `errors.${error?.data?.code ?? 'UNKNOWN_ERROR'}`
+        })
+      }
     }
   })
 
@@ -82,6 +130,7 @@ const SignupDialog = ({ type }) => {
             handleBlur={handleBlur}
             handleChange={handleInputChange}
             handleSubmit={handleSubmit}
+            loading={isLoading}
           />
           <GoogleLogin buttonWidth='100%' role={type} type='signup' />
         </Box>

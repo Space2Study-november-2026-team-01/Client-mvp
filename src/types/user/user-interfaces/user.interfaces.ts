@@ -73,7 +73,6 @@ export interface SignupParams {
   lastName: string
   email: string
   password: string
-  confirmPassword: string
   role: UserRole
 }
 
