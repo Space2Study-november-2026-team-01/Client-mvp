@@ -3,18 +3,18 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { useState } from 'react'
-
+import useAxios from '~/hooks/use-axios'
+import locationService from '~/services/location-service'
 import { styles } from '~/containers/tutor-home-page/general-info-step/GeneralInfoStep.styles'
 
 const GeneralInfoStep = ({ btnsBox }) => {
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
 
-  const cities = {
-    Ukraine: ['Kyiv', 'Lviv'],
-    Poland: ['Warsaw', 'Krakow'],
-    Germany: ['Berlin', 'Munich']
-  }
+  const { response: countries, loading: countriesLoading } = useAxios({
+    service: locationService.getCountries,
+    defaultResponse: []
+  })
 
   return (
     <Box sx={styles.container}>
@@ -32,6 +32,16 @@ const GeneralInfoStep = ({ btnsBox }) => {
 
         <Box sx={styles.selectorsContainer}>
           <TextField
+            SelectProps={{
+              displayEmpty: true,
+              renderValue: (selected) =>
+                selected ? (
+                  countries.find((item) => item.iso2 === selected)?.name
+                ) : (
+                  <span style={{ color: '#757575' }}>Select country</span>
+                )
+            }}
+            disabled={countriesLoading}
             fullWidth
             label='Country'
             onChange={(event) => {
@@ -41,35 +51,29 @@ const GeneralInfoStep = ({ btnsBox }) => {
             select
             value={country}
           >
-            renderValue=
-            {(selected) =>
-              selected || (
-                <span style={{ color: '#757575' }}>Select country</span>
-              )
-            }
-            <MenuItem value='Ukraine'>Ukraine</MenuItem>
-            <MenuItem value='Poland'>Poland</MenuItem>
-            <MenuItem value='Germany'>Germany</MenuItem>
+            {countries.map((country) => (
+              <MenuItem key={country.iso2} value={country.iso2}>
+                {country.name}
+              </MenuItem>
+            ))}
           </TextField>
 
           <TextField
+            SelectProps={{
+              displayEmpty: true,
+              renderValue: (selected) =>
+                selected || (
+                  <span style={{ color: '#757575' }}>Select city</span>
+                )
+            }}
             disabled={!country}
-            displayEmpty
             fullWidth
             label='City'
             onChange={(event) => setCity(event.target.value)}
-            renderValue={(selected) =>
-              selected || <span style={{ color: '#757575' }}>Select city</span>
-            }
             select
             value={city}
           >
-            {country &&
-              cities[country].map((cityName) => (
-                <MenuItem key={cityName} value={cityName}>
-                  {cityName}
-                </MenuItem>
-              ))}
+            {/* Cities will be loaded from Backend later */}
           </TextField>
         </Box>
 
