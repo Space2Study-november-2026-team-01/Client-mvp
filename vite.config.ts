@@ -8,7 +8,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), svgrPlugin(), tsconfigPaths()],
   server: {
-    port: 3000,
+    port: 3001,
     open: true,
     host: true
   },
